@@ -1,0 +1,48 @@
+<html>
+<head>
+	<script type="importmap">
+	{
+		"imports": {
+			"@workadventure/simple-peer" : "https://esm.sh/@workadventure/simple-peer",
+			"signalingserver.js" : "https://esm.sh/signalingserver.js",
+			"p2p.js" : "./p2p.js"
+		}
+	}
+	</script>
+</head>
+<body>
+	<script type="module">
+		import {createPeer} from 'p2p.js';
+		
+		const peers = [];
+		
+		const config = {
+			appid: 'myAppTest'
+		}		
+		
+		const peer = createPeer(config);
+		
+		peer.onPeerConnect((peer_id)=>{
+			console.log('connect',peer_id);
+			peers.push(peer_id);
+		});
+		peer.onPeerDisconnect((peer_id)=>{
+			console.log('disconnect',peer_id);
+			peers.splice(peers.findIndex(item=>item===peer_id),1);
+		});
+		peer.onPeerData((peer_id,data) => {
+			console.log(`${peer_id} say : ${new TextDecoder().decode(data)}`);
+		});
+		
+		setInterval(()=>{
+			const me = peer.getPeerId();
+			peers.forEach(peer_id=>peer.sendPeerData(peer_id,`i am ${me}`));
+		},5000);
+		
+		setTimeout(()=>{
+			peer.destroyPeer();
+			console.log('destroy');
+		},30000)
+	</script>
+</body>
+</html>

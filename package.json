@@ -1,0 +1,36 @@
+{
+  "name": "p2p.js",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Build serverless peer to peer webapps powered by auto matchmaking WebRTC",
+  "main": "p2p.js",
+  "module": "p2p.js",
+  "exports": {
+    ".": {
+      "import": "p2p.js"
+    }
+  },      
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuzulul/p2p.js.git"
+  },
+  "keywords": [
+    "p2p",
+    "webrtc",
+    "peer to peer",
+    "peer-to-peer"
+  ],
+  "author": "Nuzulul Zulkarnain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuzulul/p2p.js/issues"
+  },
+  "homepage": "https://github.com/nuzulul/p2p.js#readme",
+  "dependencies": {
+    "@workadventure/simple-peer": "^12.0.1",
+    "signalingserver.js": "^0.0.3"
+  }
+}
