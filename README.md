@@ -11,7 +11,7 @@ Build serverless peer to peer webapps without hassle powered by auto matchmaking
 
 ## How does it works?
 
-This module manage WebRTC matchmaking automatically via torrent tracker. Take a look at the [signalingserver.js](https://github.com/nuzulul/signalingserver.js) for more information.
+This module manage WebRTC matchmaking automatically via established public WebTorrent protocol as signalling transport. Take a look at the [signalingserver.js](https://github.com/nuzulul/signalingserver.js) for more information.
 
 ## Ideas
 
@@ -31,7 +31,6 @@ npm install p2p.js
 
 CDN
 
-* [https://cdn.jsdelivr.net/npm/p2p.js/+esm](https://cdn.jsdelivr.net/npm/p2p.js/+esm)
 * [https://esm.sh/p2p.js](https://esm.sh/p2p.js)
 
 ## Usage
@@ -76,7 +75,7 @@ Create new p2p peer.
 config - configuration object :
 * appid : (string) custom unique application ID.
 * password : (string) optional custom password for session encryption.
-* tracker : (array) optional custom Torrent tracker list.
+* tracker : (array) optional custom WebTorrent tracker list.
 
 ### `peer.getPeerId()`
 
