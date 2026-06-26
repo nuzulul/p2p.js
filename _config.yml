@@ -1,0 +1,8 @@
+title: p2p.js
+description: Build serverless peer to peer webapps powered by auto matchmaking WebRTC.
+google_analytics: 
+show_downloads: false
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
