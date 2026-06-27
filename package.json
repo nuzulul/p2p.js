@@ -1,6 +1,6 @@
 {
   "name": "p2p.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Build serverless peer to peer webapps powered by auto matchmaking WebRTC",
   "main": "p2p.js",
