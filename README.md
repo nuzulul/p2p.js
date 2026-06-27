@@ -1,5 +1,5 @@
 # p2p.js
-p2p.js is an open source JavaScript library which provides solution to build peer to peer webapps without hassle powered by auto matchmaking WebRTC. This solve the common issues faced by WebRTC based application developers who need to deploying their own signaling server.
+p2p.js is an open source JavaScript library which provides solution to build peer to peer webapps without hassle powered by auto matchmaking WebRTC. This solve the common issues faced by WebRTC based application developers who are unwilling to deploy the required signaling servers.
 
 [>DEMO<](https://nuzulul.github.io/p2p.js/demo.html)
 
