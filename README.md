@@ -1,6 +1,8 @@
 # p2p.js
 p2p.js is an open source JavaScript library which provides solution to build peer to peer webapps without hassle powered by auto matchmaking WebRTC. This solve the common issues faced by WebRTC based application developers who are unwilling to deploy the required signaling servers.
 
+p2p.js is designed to be a low level library in a heararchy of p2p libraries. Consequently in order to get more features you need to build abstractions on top provided api or another library.
+
 [>DEMO<](https://nuzulul.github.io/p2p.js/demo.html)
 
 ## Benefit
@@ -12,7 +14,7 @@ p2p.js is an open source JavaScript library which provides solution to build pee
 
 ## How does it works?
 
-This module manage WebRTC matchmaking automatically via established public WebTorrent protocol as signaling transport then provides video, audio and data channel. Take a look at the [signalingserver.js](https://github.com/nuzulul/signalingserver.js) for more information.
+This module manage WebRTC matchmaking automatically based on app id via established public WebTorrent protocol as signaling transport then provides video, audio and data channel. Take a look at the [signalingserver.js](https://github.com/nuzulul/signalingserver.js) for more information.
 
 ## Ideas
 
@@ -175,9 +177,7 @@ const config = {
 
 const peer = createPeer(config);
 ```
-Services :
-- [Cloudflare](https://www.cloudflare.com/products/turn-sfu/) - Include free offer.
-- [Metered](https://www.metered.ca/stun-turn) - Include free offer.
+TURN services include free offer among others are [Cloudflare](https://www.cloudflare.com/products/turn-sfu/) and [Metered](https://www.metered.ca/stun-turn) or you can [self hosted TURN](https://github.com/nuzulul/awesome-webrtc#stun--turn).
 
 ## License
 
