@@ -26,6 +26,8 @@ const createPeer = (config) => {
 	const peerPool = {};
 	const lockPool = {};
 	let stopSignal = false;
+	let rtcconfig;
+	let webrtc;
 	
 	if(config && config.appid){
 		const appid = appName+config.appid;
@@ -45,6 +47,14 @@ const createPeer = (config) => {
 			throw new Error(`Tracker list is empty`);
 		}
 		nodeConfig[tracker] = config.tracker;
+	}
+	
+	if(config && config.rtcconfig){
+		rtcconfig = config.rtcconfig;
+	}
+	
+	if(config && config.webrtc){
+		webrtc = config.webrtc;
 	}
 	
 	//create signaling server node;
@@ -128,11 +138,22 @@ const createPeer = (config) => {
 			peerPool[node_id+type].destroy();
 			delete peerPool[node_id+type];
 		}
-				
-		peerPool[node_id+type] = new Peer({
+		
+		let peerconfig = {
 			initiator,
-			trickle : false
-		});
+			trickle : false,
+			channelName: appName
+		}
+		
+		if(rtcconfig){
+			peerconfig[config] = rtcconfig;
+		}
+		
+		if(webrtc){
+			peerconfig[wrtc] = webrtc;
+		}
+				
+		peerPool[node_id+type] = new Peer(peerconfig);
 		
 		if(data){
 			peerPool[node_id+type].signal(data);
@@ -217,6 +238,7 @@ const createRoom = (myId,onNewPeer, onDestroyPeer) => {
 	let onPeerStream = ()=>{};
 	let onPeerTrack = ()=>{};
 	let onPeerData = ()=>{};
+	let onPeerError = ()=>{};
 	
 	onNewPeer((peer,peer_id) => {
 		if(peerPool[peer_id]){
@@ -240,6 +262,10 @@ const createRoom = (myId,onNewPeer, onDestroyPeer) => {
 		
 		peer.on('data', (data) => {
 			onPeerData(peer_id,data);
+		});
+		
+		peer.on('error', (err) => {
+			onPeerError(peer_id,err);
 		});
 		
 		onPeerConnect(peer_id);
@@ -291,7 +317,9 @@ const createRoom = (myId,onNewPeer, onDestroyPeer) => {
 		
 		onPeerTrack: f => (onPeerTrack = f),
 		
-		onPeerData: f => (onPeerData = f)
+		onPeerData: f => (onPeerData = f),
+		
+		onPeerError: f => (onPeerError = f)
 		
 	};
 	

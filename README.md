@@ -87,6 +87,8 @@ config - configuration object :
 * appid - custom unique application ID.
 * password - optional custom password for session encryption.
 * tracker - optional custom WebTorrent tracker list.
+* rtcconfig - optional custom [RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection) configuration object.
+* webrtc - custom WebRTC object contains [RTCPeerConnection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection), [RTCSessionDescription](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription), [RTCIceCandidate](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate).
 
 ### `peer.getPeerId()`
 
@@ -143,6 +145,39 @@ Listen on incoming stream.
 ### `peer.onPeerTrack((peer_id,track, stream)=>{})`
 
 Listen on incoming video/audio track.
+
+### `peer.onPeerError((peer_id,error)=>{})`
+
+Listen on fatal error connection.
+
+## TURN
+
+p2p.js works for most WebRTC apps but some network don't allow peer-to-peer connection. The common way to solve this issue is by using [TURN](https://webrtc.org/getting-started/turn-server) for relaying network traffic.
+
+```
+const iceConfiguration = {
+    iceServers: [
+        {
+			urls: 'stun:my-turn-server.mycompany.com:19401'
+		},
+		{
+            urls: 'turn:my-turn-server.mycompany.com:19402',
+            username: 'optional-username',
+            credential: 'auth-token'
+        }
+    ]
+}
+
+const config = {
+	appid: 'myApp',
+	rtcconfig : iceConfiguration
+}
+
+const peer = createPeer(config);
+```
+Services :
+- [Cloudflare](https://www.cloudflare.com/products/turn-sfu/) - Include free offer.
+- [Metered](https://www.metered.ca/stun-turn) - Include free offer.
 
 ## License
 
