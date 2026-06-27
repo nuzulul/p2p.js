@@ -1,5 +1,5 @@
 # p2p.js
-Build serverless peer to peer webapps without hassle powered by auto matchmaking WebRTC support video, audio and data channels.
+p2p.js is an open source JavaScript library which provides solution to build peer to peer webapps without hassle powered by auto matchmaking WebRTC. This solve the common issues faced by WebRTC based application developers who need to deploying their own signaling server.
 
 [>DEMO<](https://nuzulul.github.io/p2p.js/demo.html)
 
@@ -8,10 +8,11 @@ Build serverless peer to peer webapps without hassle powered by auto matchmaking
 * ✅ WebRTC auto matchmaking
 * ✅ No server required
 * ✅ Simple API
+* ✅ ESM support
 
 ## How does it works?
 
-This module manage WebRTC matchmaking automatically via established public WebTorrent protocol as signalling transport. Take a look at the [signalingserver.js](https://github.com/nuzulul/signalingserver.js) for more information.
+This module manage WebRTC matchmaking automatically via established public WebTorrent protocol as signaling transport then provides video, audio and data channel. Take a look at the [signalingserver.js](https://github.com/nuzulul/signalingserver.js) for more information.
 
 ## Ideas
 
@@ -32,6 +33,16 @@ npm install p2p.js
 CDN
 
 * [https://esm.sh/p2p.js](https://esm.sh/p2p.js)
+
+```
+<script type="importmap">
+{
+	"imports": {
+		"p2p.js" : "https://esm.sh/p2p.js"
+	}
+}
+</script>
+```
 
 ## Usage
 
@@ -70,16 +81,16 @@ setInterval(()=>{
 
 ### `peer = createPeer(config)`
 
-Create new p2p peer.
+Create a new p2p peer.
 
 config - configuration object :
-* appid : (string) custom unique application ID.
-* password : (string) optional custom password for session encryption.
-* tracker : (array) optional custom WebTorrent tracker list.
+* appid - custom unique application ID.
+* password - optional custom password for session encryption.
+* tracker - optional custom WebTorrent tracker list.
 
 ### `peer.getPeerId()`
 
-Get this unique peer ID.
+Get this peer ID.
 
 ### `peer.getPeers()`
 
@@ -115,11 +126,11 @@ Replace a `MediaStreamTrack` with another track.
 
 ### `peer.onPeerConnect((peer_id)=>{})`
 
-Listen on new peer.
+Listen on new peer connection.
 
 ### `peer.onPeerDisconnect((peer_id)=>{})`
 
-Listen on peer disconnect.
+Listen on peer disconnection.
 
 ### `peer.onPeerData((peer_id,data)=>{})`
 
@@ -127,11 +138,11 @@ Listen on incoming data.
 
 ### `peer.onPeerStream((peer_id,stream)=>{})`
 
-Listen on incoming stream from peer.
+Listen on incoming stream.
 
 ### `peer.onPeerTrack((peer_id,track, stream)=>{})`
 
-Listen on incoming video/audio track from peer.
+Listen on incoming video/audio track.
 
 ## License
 
