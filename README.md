@@ -154,7 +154,7 @@ Listen on fatal error connection.
 
 ## TURN
 
-p2p.js works for most WebRTC apps but some network don't allow peer-to-peer connection. The common way to solve this issue is by using [TURN](https://webrtc.org/getting-started/turn-server) for relaying network traffic.
+p2p.js works for most WebRTC apps but some network don't allow peer-to-peer connection. The common way to solve this issue is by using [TURN](https://webrtc.org/getting-started/turn-server) for relaying network traffic. TURN services include free offer among others are [Cloudflare](https://www.cloudflare.com/products/turn-sfu/) and [Metered](https://www.metered.ca/stun-turn) or you can [self hosted TURN](https://github.com/nuzulul/awesome-webrtc#stun--turn).
 
 ```
 const iceConfiguration = {
@@ -177,7 +177,6 @@ const config = {
 
 const peer = createPeer(config);
 ```
-TURN services include free offer among others are [Cloudflare](https://www.cloudflare.com/products/turn-sfu/) and [Metered](https://www.metered.ca/stun-turn) or you can [self hosted TURN](https://github.com/nuzulul/awesome-webrtc#stun--turn).
 
 ## License
 
