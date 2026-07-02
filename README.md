@@ -178,6 +178,11 @@ const config = {
 const peer = createPeer(config);
 ```
 
+## See Also
+
+- [WebPEER](https://github.com/nuzulul/webpeerjs) - WebPEER is a P2P Network that Runs on Standard Browser.
+- [signalingserver.js](https://github.com/nuzulul/signalingserver.js) - Alternative WebRTC signaling server that works in browser, no server required.
+
 ## License
 
 * [MIT](https://github.com/nuzulul/p2p.js/blob/main/LICENSE) (2026) [Nuzulul Zulkarnain](https://github.com/nuzulul)
